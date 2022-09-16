@@ -39,6 +39,17 @@ final class UserLoginProtocolOrientedTests: XCTestCase {
             
     }
     
+    func testShowLogin_whenLoginStorageReturnsEmptyString() throws {
+        //given
+        loginStorageService.storage["ACCESS_TOKEN"] = "" //returns empty string
+        //when
+        sut.checkLogin()
+        //then
+        XCTAssertEqual(output.check.count, 1)
+        XCTAssertEqual(output.check.first, .login)
+            
+    }
+    
     func testShowMainApp_whenLoginStorageReturnsUserAccessToken() throws {
         //given
         loginStorageService.storage["ACCESS_TOKEN"] = "12312" //random token to mock actual token
