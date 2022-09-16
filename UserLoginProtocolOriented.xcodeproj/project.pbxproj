@@ -17,6 +17,11 @@
 		FCB41AEC28D4A83C0047641D /* UserLoginProtocolOrientedUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB41AEB28D4A83C0047641D /* UserLoginProtocolOrientedUITestsLaunchTests.swift */; };
 		FCB41AF928D4A9480047641D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB41AF828D4A9480047641D /* LoginViewController.swift */; };
 		FCB41AFB28D4A9F00047641D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB41AFA28D4A9F00047641D /* MainViewController.swift */; };
+		FCB41AFF28D4AAB40047641D /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB41AFE28D4AAB40047641D /* RootViewModel.swift */; };
+		FCB41B0228D4ABEE0047641D /* LoginStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB41B0128D4ABEE0047641D /* LoginStorageService.swift */; };
+		FCB41B0428D4AC440047641D /* LoginStorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB41B0328D4AC440047641D /* LoginStorageServiceImpl.swift */; };
+		FCB41B0628D4AD2F0047641D /* RootViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB41B0528D4AD2F0047641D /* RootViewModelOutput.swift */; };
+		FCB41B0928D4B27B0047641D /* KeyWindow+UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB41B0828D4B27B0047641D /* KeyWindow+UIApplication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,11 @@
 		FCB41AEB28D4A83C0047641D /* UserLoginProtocolOrientedUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginProtocolOrientedUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FCB41AF828D4A9480047641D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FCB41AFA28D4A9F00047641D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FCB41AFE28D4AAB40047641D /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		FCB41B0128D4ABEE0047641D /* LoginStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorageService.swift; sourceTree = "<group>"; };
+		FCB41B0328D4AC440047641D /* LoginStorageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorageServiceImpl.swift; sourceTree = "<group>"; };
+		FCB41B0528D4AD2F0047641D /* RootViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelOutput.swift; sourceTree = "<group>"; };
+		FCB41B0828D4B27B0047641D /* KeyWindow+UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyWindow+UIApplication.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +111,8 @@
 		FCB41AC728D4A8390047641D /* UserLoginProtocolOriented */ = {
 			isa = PBXGroup;
 			children = (
+				FCB41B0728D4B2690047641D /* Extensions */,
+				FCB41B0028D4ABE00047641D /* StorageService */,
 				FCB41AFD28D4AA5C0047641D /* ViewModel */,
 				FCB41AFC28D4AA570047641D /* View */,
 				FCB41AC828D4A8390047641D /* AppDelegate.swift */,
@@ -142,8 +154,27 @@
 		FCB41AFD28D4AA5C0047641D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FCB41AFE28D4AAB40047641D /* RootViewModel.swift */,
+				FCB41B0528D4AD2F0047641D /* RootViewModelOutput.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FCB41B0028D4ABE00047641D /* StorageService */ = {
+			isa = PBXGroup;
+			children = (
+				FCB41B0128D4ABEE0047641D /* LoginStorageService.swift */,
+				FCB41B0328D4AC440047641D /* LoginStorageServiceImpl.swift */,
+			);
+			path = StorageService;
+			sourceTree = "<group>";
+		};
+		FCB41B0728D4B2690047641D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCB41B0828D4B27B0047641D /* KeyWindow+UIApplication.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,10 +307,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCB41B0928D4B27B0047641D /* KeyWindow+UIApplication.swift in Sources */,
 				FCB41AF928D4A9480047641D /* LoginViewController.swift in Sources */,
+				FCB41B0428D4AC440047641D /* LoginStorageServiceImpl.swift in Sources */,
+				FCB41B0628D4AD2F0047641D /* RootViewModelOutput.swift in Sources */,
 				FCB41ACD28D4A8390047641D /* RootViewController.swift in Sources */,
+				FCB41B0228D4ABEE0047641D /* LoginStorageService.swift in Sources */,
 				FCB41AC928D4A8390047641D /* AppDelegate.swift in Sources */,
 				FCB41ACB28D4A8390047641D /* SceneDelegate.swift in Sources */,
+				FCB41AFF28D4AAB40047641D /* RootViewModel.swift in Sources */,
 				FCB41AFB28D4A9F00047641D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
