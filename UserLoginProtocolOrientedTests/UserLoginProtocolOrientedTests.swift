@@ -9,28 +9,85 @@ import XCTest
 @testable import UserLoginProtocolOriented
 
 final class UserLoginProtocolOrientedTests: XCTestCase {
+    
+    private var sut : RootViewModel!
+    private var loginStorageService : MockLoginStorageService!
+    private var output : MockRootViewModelOutput!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        loginStorageService = MockLoginStorageService()
+        output = MockRootViewModelOutput()
+        
+        sut = RootViewModel(loginStorageService: loginStorageService)
+        sut.output = output
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+        loginStorageService = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testShowLogin_whenLoginStorageReturnsEmptyUserAccessToken() throws {
+        //given
+        loginStorageService.storage = [:] //No access token
+        //when
+        sut.checkLogin()
+        //then
+        XCTAssertEqual(output.check.count, 1)
+        XCTAssertEqual(output.check.first, .login)
+            
+    }
+    
+    func testShowMainApp_whenLoginStorageReturnsUserAccessToken() throws {
+        //given
+        loginStorageService.storage["ACCESS_TOKEN"] = "12312" //random token to mock actual token
+        //when
+        sut.checkLogin()
+        //then
+        XCTAssertEqual(output.check.count, 1)
+        XCTAssertEqual(output.check.first, .mainApp)
+            
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+}
 
+
+class MockLoginStorageService : LoginStorageService {
+    
+    var userAccessTokenKey: String {
+        return "ACCESS_TOKEN"
+    }
+    
+    var storage : [String : String] = [:]
+    
+    func setUserAccessToken(token: String) {
+        storage[userAccessTokenKey] = token
+    }
+    
+    func getUserAccessToken() -> String? {
+        return storage[userAccessTokenKey]
+    }
+    
+    
+}
+
+class MockRootViewModelOutput : RootViewModelOutput {
+    
+    enum Check {
+        case login
+        case mainApp
+    }
+    
+    var check : [Check] = []
+    
+    func showLogin() {
+        check.append(.login)
+    }
+    
+    func showMainApp() {
+        check.append(.mainApp)
+    }
+    
+    
 }
